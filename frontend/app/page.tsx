@@ -610,11 +610,41 @@ export default function Home() {
       <section className="page-section-dark">
         <div className="section-inner">
           <h2 className="section-title section-title-light">Latent Space Interpolation</h2>
-          <p className="section-desc section-desc-light" style={{ marginBottom: 40 }}>
+          <p className="section-desc section-desc-light" style={{ marginBottom: 20 }}>
             Generate two distinct tumor scans, then interpolate through the latent space
             between them. The GAN decodes each intermediate point into a unique image —
             revealing how the model organises learned features.
           </p>
+
+          <div style={{ marginBottom: 32 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 14 }}>
+              {[
+                { src: '/tumor_interpolation_start.png', title: 'Example Image A', alt: 'Example Image A' },
+                { src: '/tumor_interpolation_lerp.gif', title: 'LERP', alt: 'LERP from A to B' },
+                { src: '/tumor_interpolation_slerp.gif', title: 'SLERP', alt: 'SLERP from A to B' },
+                { src: '/tumor_interpolation_end.png', title: 'Example Image B', alt: 'Example Image B' },
+              ].map((item) => (
+                <div key={item.src} className="card-dark" style={{ padding: 10 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    loading="lazy"
+                    style={{ width: '100%', aspectRatio: '1 / 1', objectFit: 'contain', borderRadius: 8, display: 'block', imageRendering: 'pixelated', background: '#020617' }}
+                  />
+                  <div style={{ marginTop: 10, fontSize: 12, fontWeight: 600, color: '#cbd5e1', textAlign: 'center' }}>
+                    {item.title}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <h3 style={{ fontSize: 18, fontWeight: 700, color: '#f8fafc', marginTop: 50, marginBottom: 8 }}>
+              Try interpolation yourself
+            </h3>
+            <p style={{ fontSize: 14, color: '#94a3b8', lineHeight: 1.7, marginBottom: 0 }}>
+              Generate images A and B and click "interpolate" to explore the latent path.
+            </p>
+          </div>
 
           {/* A | LERP | SLERP | B — four columns, collapses on mobile */}
           <div style={{
