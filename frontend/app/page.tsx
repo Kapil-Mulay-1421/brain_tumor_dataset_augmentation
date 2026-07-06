@@ -681,8 +681,8 @@ export default function Home() {
                   <span>No image yet</span>
                 </div>
               )}
-              <button className="btn btn-secondary btn-sm" onClick={generateA} disabled={loadingA}
-                style={{ background: 'transparent', color: '#94a3b8', borderColor: '#334155', width: '100%' }}>
+              <button className="btn btn-primary btn-sm" onClick={generateA} disabled={loadingA}
+                style={{ width: '100%' }}>
                 {loadingA ? <><Spinner /> Generating…</> : 'Generate A'}
               </button>
             </div>
@@ -751,8 +751,8 @@ export default function Home() {
                   <span>No image yet</span>
                 </div>
               )}
-              <button className="btn btn-secondary btn-sm" onClick={generateB} disabled={loadingB}
-                style={{ background: 'transparent', color: '#94a3b8', borderColor: '#334155', width: '100%' }}>
+              <button className="btn btn-primary btn-sm" onClick={generateB} disabled={loadingB}
+                style={{ width: '100%' }}>
                 {loadingB ? <><Spinner /> Generating…</> : 'Generate B'}
               </button>
             </div>
