@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { track } from "@vercel/analytics";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -152,6 +153,7 @@ export default function Home() {
       console.error(err);
     } finally {
       setLoadingGen(false);
+      track("Generate Image Click");
     }
   };
 
@@ -168,6 +170,7 @@ export default function Home() {
       console.error(err);
     } finally {
       setLoadingA(false);
+      track("Generate A Click");
     }
   };
 
@@ -184,6 +187,7 @@ export default function Home() {
       console.error(err);
     } finally {
       setLoadingB(false);
+      track("Generate B Click");
     }
   };
 
@@ -207,6 +211,7 @@ export default function Home() {
       console.error(err);
     } finally {
       setInterpolating(false);
+      track("Interpolate Click");
     }
   };
 
@@ -241,6 +246,7 @@ export default function Home() {
   // ── GIF download (pure canvas, no dependencies) ──────────────────────────────
 
   const downloadGif = async () => {
+    track("Download GIF Click")
     const frames = method === 'slerp' ? slerpFrames : lerpFrames;
     if (!frames.length) return;
     setDownloadingGif(true);
